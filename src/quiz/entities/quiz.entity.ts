@@ -1,13 +1,12 @@
-import { Quiz } from "../schema/quiz.schema";
-import IQuestion from "./question";
+import { Quiz } from '../schema/quiz.schema';
+import IQuestion from './question';
 
-export class QuizModel extends Quiz{
+export class QuizModel extends Quiz {
+  id: number;
 
-    id: number;
+  title: string;
 
-    title: string;
+  creator: string; // username of creator
 
-    creator: string; // username of creator
-
-    questions: IQuestion[];
+  questions: IQuestion[];
 }

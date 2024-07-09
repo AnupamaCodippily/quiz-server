@@ -1,9 +1,7 @@
 export default interface Answer {
-    
-    isCorrect: boolean;
-    
-    imageUrl?: string;
+  isCorrect: boolean;
 
-    text: string;
+  imageUrl?: string;
 
+  text: string;
 }

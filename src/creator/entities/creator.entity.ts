@@ -1,3 +1,3 @@
-import { Creator } from "../schemas/creator.schema";
+import { Creator } from '../schemas/creator.schema';
 
-export class CreatorModel extends Creator{}
+export class CreatorModel extends Creator {}

@@ -1,5 +1,5 @@
-import { CreatorModel } from "../entities/creator.entity";
+import { CreatorModel } from '../entities/creator.entity';
 
 export class CreateCreatorDto {
-    details: CreatorModel
+  details: CreatorModel;
 }

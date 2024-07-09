@@ -1,10 +1,9 @@
-import Answer from "./answer";
+import Answer from './answer';
 
 export default interface IQuestion {
-    
-    text: string;
-    
-    imageUrl?: string;
+  text: string;
 
-    answers: Answer [];
+  imageUrl?: string;
+
+  answers: Answer[];
 }

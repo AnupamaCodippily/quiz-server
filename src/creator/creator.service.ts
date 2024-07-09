@@ -7,8 +7,9 @@ import { Creator } from './schemas/creator.schema';
 
 @Injectable()
 export class CreatorService {
-
-  constructor(@InjectModel(Creator.name) private readonly creatorModel: Model<Creator>) {}
+  constructor(
+    @InjectModel(Creator.name) private readonly creatorModel: Model<Creator>,
+  ) {}
 
   create(createCreatorDto: CreateCreatorDto): Promise<Creator> {
     // TODO: validation
