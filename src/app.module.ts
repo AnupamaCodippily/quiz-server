@@ -9,9 +9,9 @@ import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true, // makes the ConfigModule globally available
-      envFilePath: '.env', // path to your .env file
-    }),
+      isGlobal: true,
+      envFilePath: '.env',
+    }), // TODO: check if this is ok when deployed to prod
     MongooseModule.forRoot('mongodb://localhost:27017/quizdb'),
     QuizModule,
     CreatorModule,
