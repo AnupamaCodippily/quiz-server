@@ -2,13 +2,14 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { CreatorService } from './creator.service';
 import { CreateCreatorDto } from './dto/create-creator.dto';
 import { UpdateCreatorDto } from './dto/update-creator.dto';
+import { Creator } from './schemas/creator.schema';
 
 @Controller('creator')
 export class CreatorController {
   constructor(private readonly creatorService: CreatorService) {}
 
   @Post()
-  create(@Body() createCreatorDto: CreateCreatorDto) {
+  create(@Body() createCreatorDto: CreateCreatorDto): Promise<Creator> {
     return this.creatorService.create(createCreatorDto);
   }
 
@@ -19,16 +20,16 @@ export class CreatorController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.creatorService.findOne(+id);
+    return this.creatorService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCreatorDto: UpdateCreatorDto) {
-    return this.creatorService.update(+id, updateCreatorDto);
+    return this.creatorService.update(id, updateCreatorDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.creatorService.remove(+id);
+    return this.creatorService.remove(id);
   }
 }

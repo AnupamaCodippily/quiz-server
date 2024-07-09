@@ -1,26 +1,33 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCreatorDto } from './dto/create-creator.dto';
 import { UpdateCreatorDto } from './dto/update-creator.dto';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model, mongo } from 'mongoose';
+import { Creator } from './schemas/creator.schema';
 
 @Injectable()
 export class CreatorService {
-  create(createCreatorDto: CreateCreatorDto) {
-    return 'This action adds a new creator';
+
+  constructor(@InjectModel(Creator.name) private readonly creatorModel: Model<Creator>) {}
+
+  create(createCreatorDto: CreateCreatorDto): Promise<Creator> {
+    // TODO: validation
+    return this.creatorModel.create(createCreatorDto.details);
   }
 
   findAll() {
-    return `This action returns all creator`;
+    return this.creatorModel.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} creator`;
+  findOne(id: string) {
+    return this.creatorModel.findById(id);
   }
 
-  update(id: number, updateCreatorDto: UpdateCreatorDto) {
-    return `This action updates a #${id} creator`;
+  update(id: string, updateCreatorDto: UpdateCreatorDto) {
+    return this.creatorModel.findByIdAndUpdate(id, updateCreatorDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} creator`;
+  remove(id: string) {
+    return this.creatorModel.deleteOne({ _id: id });
   }
 }

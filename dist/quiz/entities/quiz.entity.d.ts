@@ -1,13 +1,8 @@
 import { Quiz } from "../schema/quiz.schema";
 import IQuestion from "./question";
-
-export class QuizModel extends Quiz{
-
+export declare class QuizModel extends Quiz {
     id: number;
-
     title: string;
-
-    creator: string; // username of creator
-
+    creator: string;
     questions: IQuestion[];
 }
