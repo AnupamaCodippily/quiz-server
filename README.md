@@ -9,4 +9,8 @@ This application is the backend server for a quiz sharing website
 
 Basics
 Timed Quizzes - no time to Google!
+
 Death by Quiz
+
+OAuth login
+
