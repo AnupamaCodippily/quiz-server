@@ -12,7 +12,7 @@ import { ConfigModule } from '@nestjs/config';
       isGlobal: true,
       envFilePath: '.env',
     }), // TODO: check if this is ok when deployed to prod
-    MongooseModule.forRoot('mongodb://localhost:27017/quizdb'),
+    MongooseModule.forRoot(process.env['MONGO_URL']),
     QuizModule,
     CreatorModule,
   ],
