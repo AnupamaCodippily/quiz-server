@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateCreatorDto } from './dto/create-creator.dto';
 import { UpdateCreatorDto } from './dto/update-creator.dto';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model, mongo } from 'mongoose';
+import { Model } from 'mongoose';
 import { Creator } from './schemas/creator.schema';
 
 @Injectable()

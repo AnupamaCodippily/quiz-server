@@ -7,26 +7,27 @@ import { Model } from 'mongoose';
 
 @Injectable()
 export class QuizService {
-
-  constructor(@InjectModel(Quiz.name) private readonly quizModel: Model<Quiz>) {}
+  constructor(
+    @InjectModel(Quiz.name) private readonly quizModel: Model<Quiz>,
+  ) {}
 
   create(createQuizDto: CreateQuizDto) {
     return this.quizModel.create(createQuizDto.details);
   }
 
   findAll() {
-    return `This action returns all quiz`;
+    return this.quizModel.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} quiz`;
+  findOne(id: string) {
+    return this.quizModel.findById(id);
   }
 
-  update(id: number, updateQuizDto: UpdateQuizDto) {
-    return `This action updates a #${id} quiz`;
+  update(id: string, updateQuizDto: UpdateQuizDto) {
+    return this.quizModel.findByIdAndUpdate(id, updateQuizDto.details);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} quiz`;
+  remove(_id: string) {
+    return this.quizModel.deleteOne({ _id });
   }
 }
