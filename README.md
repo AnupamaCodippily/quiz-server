@@ -7,10 +7,20 @@ This application is the backend server for a quiz sharing website
 
 ## TODO
 
-Basics
-Timed Quizzes - no time to Google!
+ - Basics: up and running
+ 
+ - Timed Quizzes - no time to Google!
 
-Death by Quiz
+ - Death by Quiz: Timed quizzes where wrong answers are penalized
 
-OAuth login
+ - OAuth login
 
+ - User input validation
+
+ - Jest tests
+
+ - Monetization: ads or memberships?
+
+ - Docker setup
+
+ - Github Actions
