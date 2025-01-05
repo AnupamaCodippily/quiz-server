@@ -1,0 +1,79 @@
+[
+    {
+      "question": "What is React, and why is it popular for frontend development?",
+      "expectedAnswer": "React is a JavaScript library for building user interfaces, primarily for single-page applications. It is popular because of its component-based architecture, virtual DOM for performance optimization, and strong ecosystem support with tools like Redux, React Router, and React Query. Additionally, it supports modern development paradigms such as declarative programming and has excellent community support."
+    },
+    {
+      "question": "What are the main features of React?",
+      "expectedAnswer": "React's main features include the virtual DOM, JSX for writing UI components, one-way data binding for predictable data flow, component-based architecture, and support for hooks, which enable state and lifecycle management in functional components."
+    },
+    {
+      "question": "What is JSX, and how does it work in React?",
+      "expectedAnswer": "JSX is a syntax extension for JavaScript that allows you to write HTML-like code directly within JavaScript. React transforms JSX into `React.createElement` calls under the hood. This makes it easier to define component structures while maintaining the power of JavaScript for dynamic content and behavior."
+    },
+    {
+      "question": "What is the virtual DOM, and how does it help React achieve better performance?",
+      "expectedAnswer": "The virtual DOM is a lightweight, in-memory representation of the actual DOM. React updates the virtual DOM when the state or props of a component change, compares it with the previous version (diffing), and applies only the necessary updates to the real DOM. This minimizes expensive DOM manipulations and improves performance."
+    },
+    {
+      "question": "What is the difference between state and props in React?",
+      "expectedAnswer": "State is managed within a component and can change over time, typically used to store dynamic data. Props, on the other hand, are read-only inputs passed to a component from its parent, used to configure or customize the component's behavior."
+    },
+    {
+      "question": "How do you pass data between components in React?",
+      "expectedAnswer": "Data can be passed from a parent to a child component via props. For sibling components or deeply nested components, I use state management solutions like React Context, Redux, or Recoil, depending on the complexity of the data flow."
+    },
+    {
+      "question": "What are React hooks? Can you name some commonly used ones?",
+      "expectedAnswer": "Hooks are functions introduced in React 16.8 that allow functional components to use state and lifecycle features. Commonly used hooks include `useState` for managing state, `useEffect` for side effects, `useContext` for consuming context, and `useMemo` for memoizing computations."
+    },
+    {
+      "question": "How does useState work in React?",
+      "expectedAnswer": "`useState` is a hook that allows you to add state to a functional component. It returns a state variable and a function to update it. For example, `const [count, setCount] = useState(0)` initializes `count` to 0 and provides `setCount` to update it."
+    },
+    {
+      "question": "What is the purpose of the useEffect hook?",
+      "expectedAnswer": "`useEffect` is used to handle side effects in functional components, such as data fetching, subscriptions, or manual DOM manipulations. It runs after the render phase and can be controlled by a dependency array to limit when the effect is executed."
+    },
+    {
+      "question": "What are controlled and uncontrolled components in React?",
+      "expectedAnswer": "A controlled component is one where the form's state is managed by React, with the value of inputs controlled via state variables. An uncontrolled component relies on the DOM for its state, typically using refs to access input values directly."
+    },
+    {
+      "question": "What are error boundaries in React?",
+      "expectedAnswer": "Error boundaries are React components that catch JavaScript errors in their child component tree, log the errors, and display a fallback UI instead of crashing the entire application. They are implemented using class components with `componentDidCatch` and `getDerivedStateFromError`."
+    },
+    {
+      "question": "What is React context, and when would you use it?",
+      "expectedAnswer": "React Context provides a way to share state or data globally across a component tree without manually passing props at every level. It is useful for theming, authentication, and managing global state in smaller applications."
+    },
+    {
+      "question": "How do you optimize performance in React applications?",
+      "expectedAnswer": "Performance optimization techniques include memoizing components with `React.memo`, using `useMemo` and `useCallback` for expensive computations or callbacks, lazy loading components with `React.lazy`, and using a proper state management solution to avoid unnecessary re-renders."
+    },
+    {
+      "question": "What is React.memo, and how does it work?",
+      "expectedAnswer": "`React.memo` is a higher-order component that prevents a functional component from re-rendering if its props have not changed. It uses shallow comparison to determine if a re-render is necessary."
+    },
+    {
+      "question": "What is React.lazy, and how does it enable code-splitting?",
+      "expectedAnswer": "`React.lazy` allows components to be loaded dynamically only when needed. It is used with `Suspense` to display fallback content while the lazy-loaded component is being fetched. This reduces the initial bundle size and improves page load performance."
+    },
+    {
+      "question": "What are higher-order components in React?",
+      "expectedAnswer": "Higher-order components (HOCs) are functions that take a component as an input and return a new component with enhanced functionality. They are used for cross-cutting concerns like authentication or logging."
+    },
+    {
+      "question": "How does React handle conditional rendering?",
+      "expectedAnswer": "React handles conditional rendering using JavaScript expressions inside JSX, such as ternary operators, logical `&&`, or rendering functions that return different components based on conditions."
+    },
+    {
+      "question": "What is PropTypes in React, and how is it used?",
+      "expectedAnswer": "PropTypes is a library for type-checking props passed to a component. It ensures that components receive props of the expected type, helping to catch bugs during development. For example, `MyComponent.propTypes = { name: PropTypes.string.isRequired }`."
+    },
+    {
+      "question": "What are React portals?",
+      "expectedAnswer": "React portals allow rendering children into a DOM node outside the hierarchy of their parent component. They are useful for modals, tooltips, or any UI element that should not be constrained by parent styles."
+    }
+  ]
+  

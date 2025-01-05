@@ -1,0 +1,139 @@
+[
+    {
+      "question": "What is the Java Memory Model, and how does it affect multithreading?",
+      "answer": "The Java Memory Model (JMM) defines how threads interact through memory and specifies how changes to memory by one thread become visible to others. Key concepts include:
+        - **Main Memory and Working Memory**: Each thread has its own working memory (cache) and interacts with the shared main memory.
+        - **Happens-Before Relationship**: Ensures visibility and ordering of operations between threads.
+        - **Volatile Keyword**: Indicates that a variable's value must be read from and written to the main memory, ensuring visibility across threads.
+        - **Synchronization**: Locks and synchronized blocks enforce mutual exclusion and memory consistency.
+      Understanding the JMM is critical for writing correct and efficient multithreaded code. It prevents issues like race conditions and ensures proper ordering of operations."
+    },
+    {
+      "question": "How does the JVM handle garbage collection, and what are some tuning strategies?",
+      "answer": "The JVM uses garbage collection (GC) to automate memory management by reclaiming unused objects. Key concepts include:
+        - **Generational GC**: Divides the heap into young, old, and sometimes permanent generations.
+        - **GC Algorithms**: Includes Serial GC, Parallel GC, CMS (Concurrent Mark-Sweep), and G1 GC, each suited for different workloads.
+        - **Tuning Strategies**:
+          - Monitor GC metrics using tools like JVisualVM or GC logs.
+          - Adjust heap size and generation ratios using JVM options (-Xms, -Xmx, -XX:NewRatio).
+          - Choose the appropriate GC algorithm based on application requirements (-XX:+UseG1GC, etc.).
+          - Optimize object allocation patterns to minimize GC overhead.
+        Proper tuning ensures low latency and high throughput, especially for high-performance applications."
+    },
+    {
+      "question": "Explain the difference between Checked and Unchecked Exceptions in Java.",
+      "answer": "Exceptions in Java are categorized into checked and unchecked exceptions:
+        - **Checked Exceptions**: Subclasses of `Exception` (except `RuntimeException`) that must be declared in the method signature using `throws` or caught explicitly in a try-catch block. Example: IOException, SQLException.
+        - **Unchecked Exceptions**: Subclasses of `RuntimeException` and `Error` that do not require explicit handling. Example: NullPointerException, IllegalArgumentException.
+        Checked exceptions enforce compile-time checks, making the code robust but verbose. Unchecked exceptions indicate programming errors or JVM issues, such as logic flaws or resource limitations."
+    },
+    {
+      "question": "What is the difference between HashMap and ConcurrentHashMap?",
+      "answer": "`HashMap` and `ConcurrentHashMap` are both implementations of the `Map` interface but differ in their concurrency behavior:
+        - **HashMap**:
+          - Not thread-safe.
+          - Allows null keys and values.
+          - Performs better in single-threaded environments.
+        - **ConcurrentHashMap**:
+          - Thread-safe, using a segmented locking mechanism for high concurrency.
+          - Does not allow null keys or values.
+          - Offers better performance in multi-threaded environments compared to synchronized HashMap.
+        Use `ConcurrentHashMap` when multiple threads access and modify the map concurrently, ensuring data consistency and avoiding `ConcurrentModificationException`."
+    },
+    {
+      "question": "How does Java's Stream API support functional programming?",
+      "answer": "The Stream API, introduced in Java 8, facilitates functional programming by allowing operations on collections in a declarative and parallelizable manner. Key features include:
+        - **Pipeline Operations**: Supports a sequence of operations (filter, map, reduce) applied lazily.
+        - **Functional Interfaces**: Uses interfaces like `Predicate`, `Function`, and `Consumer` for lambda expressions.
+        - **Parallel Streams**: Enables parallel processing with a simple API call (`parallelStream()`).
+        - **Intermediate vs. Terminal Operations**: Intermediate operations (e.g., `filter`, `map`) are lazy and produce another stream, while terminal operations (e.g., `collect`, `forEach`) produce results.
+        Example:
+        ```java
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> squares = numbers.stream()
+                                      .filter(n -> n % 2 == 0)
+                                      .map(n -> n * n)
+                                      .collect(Collectors.toList());
+        ```
+        The Stream API promotes cleaner, more expressive code and simplifies parallelism."
+    },
+    {
+      "question": "What is the difference between `final`, `finally`, and `finalize` in Java?",
+      "answer": "These terms have distinct purposes:
+        - **final**: A keyword used to define constants (`final` variables), prevent inheritance (`final` classes), or prevent method overriding (`final` methods).
+        - **finally**: A block that always executes after a `try` block, used for resource cleanup.
+        - **finalize**: A method from the `Object` class, called by the garbage collector before an object is reclaimed. It is deprecated in modern Java due to unpredictable execution.
+        Understanding these differences is crucial for writing clear and maintainable code."
+    },
+    {
+      "question": "How do you implement immutability in a Java class?",
+      "answer": "To make a Java class immutable:
+        - **Declare the class as `final`**: Prevents subclassing.
+        - **Make all fields `private` and `final`**: Prevents direct modification and ensures fields remain constant.
+        - **Provide no setters**: Avoid methods that allow changing field values.
+        - **Initialize all fields in the constructor**: Ensure fields are set once and never changed.
+        - **Perform deep copies for mutable fields**: Protect against unintended external changes.
+        Example:
+        ```java
+        public final class ImmutablePerson {
+          private final String name;
+          private final int age;
+  
+          public ImmutablePerson(String name, int age) {
+            this.name = name;
+            this.age = age;
+          }
+  
+          public String getName() {
+            return name;
+          }
+  
+          public int getAge() {
+            return age;
+          }
+        }
+        ```
+        Immutability ensures thread safety and simplifies reasoning about program behavior."
+    },
+    {
+      "question": "Explain the difference between `Comparable` and `Comparator` in Java.",
+      "answer": "Both `Comparable` and `Comparator` are used for object comparison, but they differ in purpose and usage:
+        - **Comparable**:
+          - Used to define natural ordering within a class by implementing the `compareTo` method.
+          - Example: `public class Person implements Comparable<Person> {}`.
+          - Modifies the class itself.
+        - **Comparator**:
+          - Used to define custom ordering outside the class, typically by implementing the `compare` method.
+          - Example: `Comparator<Person> byAge = (p1, p2) -> Integer.compare(p1.getAge(), p2.getAge());`.
+          - Promotes flexibility by allowing multiple comparison strategies.
+        Choosing between them depends on whether the comparison logic should be intrinsic to the class or external."
+    },
+    {
+      "question": "What is the role of the `transient` keyword in Java?",
+      "answer": "The `transient` keyword indicates that a field should not be serialized during the object serialization process. It is used to exclude sensitive or non-serializable fields from being persisted. Example:
+        ```java
+        public class User implements Serializable {
+          private String username;
+          private transient String password; // Excluded from serialization
+        }
+        ```
+        When deserializing, `transient` fields are initialized to their default values (null, 0, false, etc.). This keyword is essential for securing sensitive information like passwords or for skipping fields irrelevant to serialization."
+    },
+    {
+      "question": "How does Java's `volatile` keyword ensure thread safety?",
+      "answer": "The `volatile` keyword ensures visibility of changes to a variable across threads by preventing caching of the variable in thread-local memory. Key properties:
+        - Guarantees that reads and writes are directly performed on main memory.
+        - Does not ensure atomicity; operations like increment still require synchronization.
+        - Commonly used for flags or shared variables in multi-threaded applications.
+        Example:
+        ```java
+        private volatile boolean running = true;
+  
+        public void stop() {
+          running = false;
+        }
+        ```
+        While `volatile` improves visibility, combining it with other synchronization mechanisms may be necessary for complex operations."
+    }
+  ]
+  
